@@ -1,6 +1,6 @@
 Package: ezknitr
 Title: Avoid the Typical Working Directory Pain When Using 'knitr'
-Version: 0.3.1
+Version: 0.4
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: An extension of 'knitr' that adds flexibility in several
@@ -20,8 +20,8 @@ LazyData: true
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2016-01-06 15:28:44 UTC; Dean
+Packaged: 2016-06-12 23:13:48 UTC; Dean
 Author: Dean Attali [aut, cre]
 Maintainer: Dean Attali <daattali@gmail.com>
 Repository: CRAN
-Date/Publication: 2016-01-06 17:22:30
+Date/Publication: 2016-06-13 07:20:46

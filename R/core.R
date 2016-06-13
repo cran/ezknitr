@@ -48,6 +48,10 @@
 #' kept (\code{TRUE}) or deleted (\code{FALSE})?
 #' @param keep_html Should the final \code{html} file be kept (\code{TRUE})
 #' or deleted (\code{FALSE})?
+#' @param move_intermediate_file Should the intermediate \code{Rmd} file be
+#' moved to the output folder (\code{TRUE}) or stay in the same folder as
+#' the source \code{R} file (\code{FALSE})?
+#' @param ... Any extra parameters that should be passed to \code{knitr::spin}.
 #'   
 #' @return The path to the output directory (invisibly).
 #' 
@@ -108,12 +112,16 @@ ezspin <- function(file, wd, out_dir, fig_dir, out_suffix,
                    params = list(),
                    verbose = FALSE,
                    chunk_opts = list(tidy = FALSE),
-                   keep_rmd = FALSE, keep_md = TRUE, keep_html = TRUE) {
+                   keep_rmd = FALSE, keep_md = TRUE, keep_html = TRUE,
+                   move_intermediate_file = TRUE,
+                   ...) {
   ezknitr_helper(type = "ezspin",
                  file = file, wd = wd, out_dir = out_dir,
                  fig_dir = fig_dir, out_suffix = out_suffix,
                  params = params, verbose = verbose, chunk_opts = chunk_opts,
-                 keep_rmd = keep_rmd, keep_md = keep_md, keep_html = keep_html)
+                 keep_rmd = keep_rmd, keep_md = keep_md, keep_html = keep_html,
+                 move_intermediate_file = move_intermediate_file,
+                 ...)
 }
 
 #' @rdname ezknitr_core
@@ -138,7 +146,9 @@ ezknitr_helper <- function(type,
                            params = list(),
                            verbose = FALSE,
                            chunk_opts = list(tidy = FALSE),
-                           keep_rmd, keep_md, keep_html) {
+                           keep_rmd, keep_md, keep_html,
+                           move_intermediate_file,
+                           ...) {
   type <- match.arg(type, c("ezspin", "ezknit"))
   
   if (missing(out_suffix)) {
@@ -268,9 +278,13 @@ ezknitr_helper <- function(type,
   # This is the guts of this function - take the R script and produce HTML
   # in a few simple steps
   if (type == "ezspin") {
-    knitr::spin(file, format = "Rmd", knit = FALSE)
-    file.rename(fileRmdOrig,
-                fileRmd)
+    knitr::spin(file, format = "Rmd", knit = FALSE, ...)
+    if (move_intermediate_file) {
+      file.rename(fileRmdOrig,
+                  fileRmd)
+    } else {
+      fileRmd <- fileRmdOrig
+    }
   } else if (type == "ezknit") {
     fileRmd <- file
   }

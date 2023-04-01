@@ -1,12 +1,11 @@
 ezknitr - Avoid the typical working directory pain when using 'knitr'
 =====================================================================
 
-[![Build
-Status](https://travis-ci.org/ropenscilabs/ezknitr.svg?branch=master)](https://travis-ci.org/ropenscilabs/ezknitr)
+[![R Build Status](https://github.com/ropensci/ezknitr/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/ezknitr/actions)
 [![CRAN
-version](http://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
+version](https://www.r-pkg.org/badges/version/ezknitr)](https://cran.r-project.org/package=ezknitr)
 
-> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under
+> *Copyright 2023 [Dean Attali](https://deanattali.com). Licensed under
 > the MIT license.*
 
 [`knitr`](https://github.com/yihui/knitr) is a popular package for
@@ -47,7 +46,7 @@ To install the CRAN version:
 To install the latest developmental version from GitHub:
 
     install.packages("devtools")
-    devtools::install_github("ropenscilabs/ezknitr")
+    devtools::install_github("ropensci/ezknitr")
 
 <h2 id="overview">
 Overview
@@ -237,7 +236,7 @@ spin() vs knit()
 `knit()` is the most popular and well-known function from `knitr`. It
 lets you create a markdown document from an Rmarkdown file. You can
 learn more about `knit()` on [the official knitr
-page](http://yihui.name/knitr).
+page](https://yihui.org/knitr/).
 
 `spin()` is similar, but starts one step further back: it takes an R
 script as input, creates an Rmarkdown document from the R script, and
@@ -246,7 +245,7 @@ useful in situations where you develop a large R script and want to be
 able to produce reports from it directly instead of having to copy
 chunks into a separate Rmarkdown file. You can read more about why I
 like `spin()` in the blog post ["knitr's best hidden gem:
-spin"](http://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
+spin"](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/).
 
 <h2 id="using-render">
 Using rmarkdown::render()
@@ -262,7 +261,7 @@ the working directory issue, and this issue has yet to be addressed by
 `rmarkdown` or `knitr`, which makes `ezknitr` still useful.
 
 Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
+Conduct](https://ropensci.org/code-of-conduct/). By participating in this project you agree to
 abide by its terms.
 
-[![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![ropensci\_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
